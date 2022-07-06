@@ -1,0 +1,41 @@
+<mujocoinclude>
+    <body childclass="dl_base" name="doorlockB">
+      <body name="door_link" pos="-0.25 0. 0.">
+          <joint pos="0 0 0" name="doorjoint" type="hinge" axis="0 0 1" range="-2 0"/>
+
+          <!-- mesh door -->
+          <!-- <geom class="dl_col" material="dl_metal2" mesh="door" pos="0.385 0 0"/> -->
+
+          <!-- primitive door -->
+          <geom class="dl_col" pos="0.25 0 0" size="0.25 0.01 0.6" type="box" material="dl_metal2"/>
+
+          <!-- inertial for the whole door -->
+          <inertial pos="0 0 0" mass="1.0" diaginertia="1 1 1"/>
+
+          <body name="door_handle_body" pos="0.425 0 0">
+              <!-- no point in this joint for now -->
+              <!--
+              <joint name="handle_joint" type="hinge" axis="0 1 0" range="-0.785 0"/>
+              <inertial pos="0 0 0" mass="1" diaginertia="1 1 1" />
+              -->
+              
+              <!-- colliding handle from primitives -->
+              <geom class="dl_col" material="dl_metal" euler="1.57 0 0" pos="0.0 -0.006 0" size="0.028 0.012" type="cylinder"/>
+              <geom class="dl_col" material="dl_metal" euler="1.57 0 0" pos="0.0 -0.065 0" size="0.013 0.047" type="cylinder"/>
+              <geom class="dl_col" material="dl_metal" euler="0 1.57 0" pos="0.056 -0.12 0" size="0.019 0.075" type="cylinder"/>
+              <geom name="handle" class="dl_col" material="dl_metal" euler="0 1.57 0" pos="0.07 -0.12 0" size="0.023 0.054" type="cylinder"/>
+
+              <!-- handle from mesh (convex hull is awkward)-->
+              <!--
+              <body>
+                <geom name="handle" material="dl_metal" mesh="door_handle" pos="0.325 -0.062 0" euler="1.57 0 0"/>
+                <geom material="dl_metal" mesh="handle_base" pos="0.325 -0.006 0"/>
+              </body>
+              -->
+          </body>
+          <!-- decorative door hinges -->
+          <!-- <geom material="dl_metal" pos="0 0 .07" size="0.013 .045" type="cylinder"/>
+          <geom material="dl_metal" pos="0 0 -.07" size="0.013 .045" type="cylinder"/> -->
+      </body>
+    </body>
+</mujocoinclude>
